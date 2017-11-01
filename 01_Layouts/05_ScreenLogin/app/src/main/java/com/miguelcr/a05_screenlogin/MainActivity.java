@@ -24,8 +24,8 @@ public class MainActivity extends AppCompatActivity {
         String p = password.getText().toString();
 
         if(e.equals("admin@admin.com") && p.equals("1234")) {
-            Intent i = new Intent(
-                    this,PrivateActivity.class);
+            Intent i = new Intent(this,
+                    PrivateActivity.class);
 
             i.putExtra("userEmail",e);
             i.putExtra("userAge",20);
