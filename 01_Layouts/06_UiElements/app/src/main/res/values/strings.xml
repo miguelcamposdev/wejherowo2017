@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">06_UiElements</string>
+    <string name="label_hobbies">Select your hobbies</string>
 </resources>
