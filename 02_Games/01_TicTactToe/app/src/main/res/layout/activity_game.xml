@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/imageView9"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:onClick="cellClicked"
@@ -31,7 +31,7 @@
         app:srcCompat="@drawable/ic_empty" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/imageView9"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:onClick="cellClicked"
@@ -58,7 +58,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:onClick="cellClicked"
-        app:layout_constraintEnd_toStartOf="@+id/imageView6"
+        app:layout_constraintEnd_toStartOf="@+id/imageView9"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
         app:layout_constraintTop_toTopOf="@+id/imageView4"
@@ -107,7 +107,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:onClick="cellClicked"
-        app:layout_constraintEnd_toStartOf="@+id/imageView6"
+        app:layout_constraintEnd_toStartOf="@+id/imageView9"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageView7"
         app:layout_constraintTop_toTopOf="@+id/imageView7"

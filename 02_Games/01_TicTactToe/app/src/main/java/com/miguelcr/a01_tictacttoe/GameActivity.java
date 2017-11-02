@@ -88,7 +88,7 @@ public class GameActivity extends AppCompatActivity {
             case R.id.imageView5:
                 position = 4;
                 break;
-            case R.id.imageView6:
+            case R.id.imageView9:
                 position = 5;
                 break;
             case R.id.imageView7:
@@ -99,20 +99,51 @@ public class GameActivity extends AppCompatActivity {
                 break;
         }
 
-        if(cellSelected[position]!=0) {
+        if(cellSelected[position]==0) {
             cellSelected[position] = currentPlayer;
+
+            if(isPlaying1) {
+                imageView.setImageResource(R.drawable.ic_player_1);
+                if(existSolution(1)) {
+                    Toast.makeText(this, p1+" is the winner", Toast.LENGTH_SHORT).show();
+                } else {
+                    setTitle(p2 + " plays");
+                    isPlaying1 = false;
+                }
+            } else {
+                imageView.setImageResource(R.drawable.ic_player_2);
+                if(existSolution(2)) {
+                    Toast.makeText(this, p2+" is the winner", Toast.LENGTH_SHORT).show();
+                } else {
+                    setTitle(p1 + " plays");
+                    isPlaying1 = true;
+                }
+            }
+
         } else {
             Toast.makeText(this, "Select another cell", Toast.LENGTH_SHORT).show();
         }
 
-        if(isPlaying1) {
-            imageView.setImageResource(R.drawable.ic_player_1);
-            setTitle(p2 + " plays");
-            isPlaying1 = false;
-        } else {
-            imageView.setImageResource(R.drawable.ic_player_2);
-            setTitle(p1 + " plays");
-            isPlaying1 = true;
+
+    }
+
+    private boolean existSolution(int player) {
+        boolean exist = false;
+        // Possible solutions
+        // 0,1,2
+        // 3,4,5
+        // 6,7,8
+        // 0,4,8 >>>> the example
+        // ...
+
+        if(cellSelected[0]==cellSelected[4]
+                && cellSelected[4]==cellSelected[8]
+                && cellSelected[8]==player) {
+            exist = true;
+        } else if() {
         }
+
+        return exist;
+
     }
 }
