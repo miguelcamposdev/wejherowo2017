@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 public class GameActivity extends AppCompatActivity {
     String p1, p2;
-    boolean isPlaying1 = true;
+    boolean isPlaying1 = true, gameOver = false;
     int[] cellSelected = {0,0,0,0,0,0,0,0,0};
 
     /*
@@ -99,12 +99,13 @@ public class GameActivity extends AppCompatActivity {
                 break;
         }
 
-        if(cellSelected[position]==0) {
+        if(cellSelected[position]==0 && !gameOver) {
             cellSelected[position] = currentPlayer;
 
             if(isPlaying1) {
                 imageView.setImageResource(R.drawable.ic_player_1);
                 if(existSolution(1)) {
+                    gameOver = true;
                     Toast.makeText(this, p1+" is the winner", Toast.LENGTH_SHORT).show();
                 } else {
                     setTitle(p2 + " plays");
@@ -113,6 +114,7 @@ public class GameActivity extends AppCompatActivity {
             } else {
                 imageView.setImageResource(R.drawable.ic_player_2);
                 if(existSolution(2)) {
+                    gameOver = true;
                     Toast.makeText(this, p2+" is the winner", Toast.LENGTH_SHORT).show();
                 } else {
                     setTitle(p1 + " plays");
