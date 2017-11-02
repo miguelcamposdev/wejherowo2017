@@ -136,11 +136,34 @@ public class GameActivity extends AppCompatActivity {
         // 0,4,8 >>>> the example
         // ...
 
-        if(cellSelected[0]==cellSelected[4]
+        if(cellSelected[0]==cellSelected[1]
+                && cellSelected[1]==cellSelected[2]
+                && cellSelected[2]==player) {
+            exist = true;
+        } else if(cellSelected[3]==cellSelected[4]
+                && cellSelected[4]==cellSelected[5]
+                && cellSelected[5]==player) {
+            exist = true;
+        } else if(cellSelected[0]==cellSelected[3]
+                && cellSelected[3]==cellSelected[6]
+                && cellSelected[6]==player) {
+            exist = true;
+        }  else if(cellSelected[1]==cellSelected[4]
+                && cellSelected[4]==cellSelected[7]
+                && cellSelected[7]==player) {
+            exist = true;
+        }  else if(cellSelected[2]==cellSelected[5]
+                && cellSelected[5]==cellSelected[8]
+                && cellSelected[8]==player) {
+            exist = true;
+        }  else if(cellSelected[0]==cellSelected[4]
                 && cellSelected[4]==cellSelected[8]
                 && cellSelected[8]==player) {
             exist = true;
-        } else if() {
+        }  else if(cellSelected[2]==cellSelected[4]
+                && cellSelected[4]==cellSelected[6]
+                && cellSelected[6]==player) {
+            exist = true;
         }
 
         return exist;
