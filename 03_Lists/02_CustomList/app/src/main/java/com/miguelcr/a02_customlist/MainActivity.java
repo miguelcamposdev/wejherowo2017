@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -40,6 +41,14 @@ public class MainActivity extends AppCompatActivity {
         studentList = new ArrayList<>();
         studentList.add(new Student("Alan","Chef","Fernán Adriá School",17,"https://s3.amazonaws.com/uifaces/faces/twitter/rem/128.jpg"));
         studentList.add(new Student("Konrad","Developer","Salesianos Triana",17,"https://s3.amazonaws.com/uifaces/faces/twitter/vladzima/128.jpg"));
+
+        MyStudentAdapter adapter = new MyStudentAdapter(
+                this,
+                R.layout.student_item,
+                studentList
+        );
+
+        lista.setAdapter(adapter);
     }
 
     @Override
