@@ -17,9 +17,11 @@ public class CategoryNoteDB extends RealmObject {
     private String color;
 
     public CategoryNoteDB() {
+        this.id = MyApplication.CategoryID.incrementAndGet();
     }
 
     public CategoryNoteDB(String title, String color) {
+        this.id = MyApplication.CategoryID.incrementAndGet();
         this.title = title;
         this.color = color;
     }
