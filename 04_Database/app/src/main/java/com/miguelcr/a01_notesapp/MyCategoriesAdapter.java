@@ -46,7 +46,7 @@ class MyCategoriesAdapter extends ArrayAdapter<CategoryNoteDB> {
 
         // Set into the View components the current object information
         textViewTitle.setText(current.getTitle());
-        layout.setBackgroundColor(Color.parseColor("#ffffff"));
+        layout.setBackgroundColor(Color.parseColor(current.getColor()));
 
         return v;
     }
