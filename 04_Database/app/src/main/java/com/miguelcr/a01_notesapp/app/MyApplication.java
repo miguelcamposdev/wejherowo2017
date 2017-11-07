@@ -1,6 +1,9 @@
-package com.miguelcr.a01_notesapp;
+package com.miguelcr.a01_notesapp.app;
 
 import android.app.Application;
+
+import com.miguelcr.a01_notesapp.models.CategoryNoteDB;
+import com.miguelcr.a01_notesapp.models.NoteDB;
 
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -24,7 +27,7 @@ public class MyApplication extends Application {
 
         Realm realm = Realm.getDefaultInstance();
         CategoryID = getIdByTable(realm, CategoryNoteDB.class);
-        //NoteID = getIdByTable(realm, NoteDB.class);
+        NoteID = getIdByTable(realm, NoteDB.class);
         realm.close();
 
     }

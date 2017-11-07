@@ -1,4 +1,4 @@
-package com.miguelcr.a01_notesapp;
+package com.miguelcr.a01_notesapp.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -11,16 +11,16 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.util.List;
+import com.miguelcr.a01_notesapp.models.CategoryNoteDB;
+import com.miguelcr.a01_notesapp.R;
 
-import io.realm.RealmList;
 import io.realm.RealmResults;
 
 /**
  * Created by miguelcampos on 6/11/17.
  */
 
-class MyCategoriesAdapter extends ArrayAdapter<CategoryNoteDB> {
+public class MyCategoriesAdapter extends ArrayAdapter<CategoryNoteDB> {
     Context ctx;
     int layoutTemplate;
     RealmResults<CategoryNoteDB> categoriesList;

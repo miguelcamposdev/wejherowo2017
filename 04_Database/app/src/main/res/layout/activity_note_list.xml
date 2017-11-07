@@ -4,15 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.miguelcr.a01_notesapp.activities.MainActivity">
+    tools:context="com.miguelcr.a01_notesapp.activities.NoteListActivity">
+
 
     <ListView
-        android:id="@+id/listViewCategories"
+        android:id="@+id/listViewNotes"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></ListView>
+        android:layout_height="match_parent"></ListView>
 
 </android.support.constraint.ConstraintLayout>

@@ -1,9 +1,12 @@
-package com.miguelcr.a01_notesapp;
+package com.miguelcr.a01_notesapp.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+
+import com.miguelcr.a01_notesapp.R;
+import com.miguelcr.a01_notesapp.models.CategoryNoteDB;
 
 import io.realm.Realm;
 

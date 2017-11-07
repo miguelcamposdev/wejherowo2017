@@ -1,4 +1,6 @@
-package com.miguelcr.a01_notesapp;
+package com.miguelcr.a01_notesapp.models;
+
+import com.miguelcr.a01_notesapp.app.MyApplication;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;

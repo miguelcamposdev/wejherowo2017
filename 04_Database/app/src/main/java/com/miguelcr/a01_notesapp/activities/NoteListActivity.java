@@ -1,4 +1,4 @@
-package com.miguelcr.a01_notesapp;
+package com.miguelcr.a01_notesapp.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,38 +6,44 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+
+import com.miguelcr.a01_notesapp.R;
+import com.miguelcr.a01_notesapp.adapters.MyNotesAdapter;
+import com.miguelcr.a01_notesapp.models.CategoryNoteDB;
+import com.miguelcr.a01_notesapp.models.NoteDB;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
 
-public class MainActivity extends AppCompatActivity {
+public class NoteListActivity extends AppCompatActivity {
     ListView lista;
-    RealmResults<CategoryNoteDB> categoryNoteDBList;
     Realm realm;
+    RealmResults<NoteDB> noteList;
+    long idCategory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_note_list);
 
-        // 1. ListView component (get a reference)
-        lista = findViewById(R.id.listViewCategories);
+        // Get the categoryId where user clicked
+        Bundle extras = getIntent().getExtras();
+        idCategory = extras.getLong("categoryId");
 
-        // 2. Get the elements to show in the list
-
-        // 2.1. Connection to the Database
+        lista = findViewById(R.id.listViewNotes);
         realm = Realm.getDefaultInstance();
+        // SELECT * FROM NoteDB WHERE idCat = idCategory
+        noteList = realm.where(NoteDB.class)
+                .equalTo("idCat",idCategory)
+                .findAll();
 
-        // 2.2. Get the list of categories
-        // SELECT * FROM Categories
-        categoryNoteDBList = realm.where(CategoryNoteDB.class).findAll();
-
-        // 3. Adapter
-        MyCategoriesAdapter adapter = new MyCategoriesAdapter(
+        MyNotesAdapter adapter = new MyNotesAdapter(
                 this,
-                R.layout.category_item, // the template to draw one item
-                categoryNoteDBList
+                R.layout.note_item,
+                noteList
         );
 
         lista.setAdapter(adapter);
@@ -50,17 +56,18 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.action_new_category:
-                Intent i = new Intent(this, NewCategoryActivity.class);
+                Intent i = new Intent(this, NewNoteActivity.class);
                 startActivity(i);
-
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+
 }
