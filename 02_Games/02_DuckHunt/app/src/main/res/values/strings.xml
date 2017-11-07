@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">02_DuckHunt</string>
+    <string name="button_start_game">Start Game!</string>
+    <string name="message_wrong_nick">Write a nick</string>
+</resources>

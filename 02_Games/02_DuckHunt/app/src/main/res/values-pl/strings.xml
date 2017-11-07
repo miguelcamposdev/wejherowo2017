@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">02_DuckHunt</string>
+    <string name="button_start_game">Rozpocznij grę</string>
+</resources>
