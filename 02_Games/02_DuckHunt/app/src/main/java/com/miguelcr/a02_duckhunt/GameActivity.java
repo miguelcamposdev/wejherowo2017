@@ -38,6 +38,10 @@ public class GameActivity extends AppCompatActivity {
         // Hide the action bar
         getSupportActionBar().hide();
 
+        startCountDown();
+    }
+
+    private void startCountDown() {
         new CountDownTimer(5000, 1000) {
 
             public void onTick(long millisUntilFinished) {
@@ -51,7 +55,7 @@ public class GameActivity extends AppCompatActivity {
             }
         }.start();
     }
-
+    
     private void showGameOverDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
@@ -63,9 +67,17 @@ public class GameActivity extends AppCompatActivity {
         builder.setPositiveButton("Restart game", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
 
+                // Restart the counter
+                counter = 0;
+                // reset the gameOver
+                gameOver = false;
+                // move duck to another different position
+                moveDuck();
+                // restart the timer
+                startCountDown();
 
-                
-
+                // close the AlertDialog
+                //dialog.dismiss();
             }
         });
         builder.setNegativeButton("Quit game", new DialogInterface.OnClickListener() {
