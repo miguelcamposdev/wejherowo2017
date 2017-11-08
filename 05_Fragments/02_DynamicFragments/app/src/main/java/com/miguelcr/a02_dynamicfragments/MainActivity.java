@@ -12,6 +12,7 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
+    boolean loadBlue = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +24,15 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment f = new BlueFragment();
+                Fragment f = null;
+
+                if(loadBlue) {
+                    f = new BlueFragment();
+                    loadBlue = false;
+                } else {
+                    f = new RedFragment();
+                    loadBlue = true;
+                }
 
                 getSupportFragmentManager()
                         .beginTransaction()
