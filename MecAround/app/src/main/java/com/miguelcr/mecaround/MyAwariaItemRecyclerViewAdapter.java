@@ -1,29 +1,26 @@
 package com.miguelcr.mecaround;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.miguelcr.mecaround.AwariaItemFragment.OnListFragmentInteractionListener;
-import com.miguelcr.mecaround.dummy.DummyContent.DummyItem;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
- * TODO: Replace the implementation with code for your data type.
- */
+
 public class MyAwariaItemRecyclerViewAdapter extends RecyclerView.Adapter<MyAwariaItemRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
-    private final OnListFragmentInteractionListener mListener;
+    private List<AwariaItem> mValues;
+    private Context ctx;
 
-    public MyAwariaItemRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    public MyAwariaItemRecyclerViewAdapter(Context context, List<AwariaItem> items) {
         mValues = items;
-        mListener = listener;
+        ctx = context;
     }
 
     @Override
@@ -35,20 +32,17 @@ public class MyAwariaItemRecyclerViewAdapter extends RecyclerView.Adapter<MyAwar
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
+        // Get the current element (awaria)
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
 
-        holder.mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
-                }
-            }
-        });
+        holder.titleTextView.setText(holder.mItem.getTitle());
+        holder.carModelTextView.setText(holder.mItem.getCarModel());
+
+        Picasso.with(ctx)
+                .load(holder.mItem.getPhotoUrl())
+                .resize(50,50)
+                .centerCrop()
+                .into(holder.photoImageView);
     }
 
     @Override
@@ -58,20 +52,22 @@ public class MyAwariaItemRecyclerViewAdapter extends RecyclerView.Adapter<MyAwar
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView mIdView;
-        public final TextView mContentView;
-        public DummyItem mItem;
+        public final ImageView photoImageView;
+        public final TextView titleTextView;
+        public final TextView carModelTextView;
+        public AwariaItem mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.id);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            photoImageView = view.findViewById(R.id.imageViewPhoto);
+            titleTextView = view.findViewById(R.id.textViewTitle);
+            carModelTextView = view.findViewById(R.id.textViewCarModel);
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            return super.toString() + " '" + titleTextView.getText() + "'";
         }
     }
 }

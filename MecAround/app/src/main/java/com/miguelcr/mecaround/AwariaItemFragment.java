@@ -10,9 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AwariaItemFragment extends Fragment {
+    List<AwariaItem> awariaItemList;
 
     private int mColumnCount = 1;
 
@@ -22,6 +24,9 @@ public class AwariaItemFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        awariaItemList = new ArrayList<>();
+        awariaItemList.add(new AwariaItem("zepsute lewe lustro","ktoś go kopnął","Ferrari","https://www.endado.com/blog/wp-content/uploads/2014/02/chapuzas_espejo.jpg"));
+        awariaItemList.add(new AwariaItem("porysowana maska","mój sąsiad oszalał","Lamborghini diablo","https://www.minicar.es/large/Lamborghini-Gallardo-Superleggera-%282007%29-Autoart-118-i20880.jpg"));
 
     }
 
@@ -39,7 +44,7 @@ public class AwariaItemFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyAwariaItemRecyclerViewAdapter());
+            recyclerView.setAdapter(new MyAwariaItemRecyclerViewAdapter(getActivity(),awariaItemList));
         }
         return view;
     }
