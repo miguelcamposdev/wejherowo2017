@@ -48,7 +48,10 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                     if (response.code() == 200) {
+                        String serverKey = response.body().getKey();
+
                         Intent i = new Intent(MainActivity.this, UserPrivateActivity.class);
+                        i.putExtra("key",serverKey);
                         startActivity(i);
                     } else {
                         Toast.makeText(MainActivity.this, "Email and/or password are not ok", Toast.LENGTH_SHORT).show();
